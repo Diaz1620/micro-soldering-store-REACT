@@ -1,0 +1,38 @@
+.item {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    width: 20rem;
+    height: auto;
+    padding: .5rem;
+    margin: .5rem;
+    background-color: white;
+}
+
+.item img {
+    width: 275px;
+    height: 275px;
+}
+
+@media (max-width: 414px){
+    .item {
+        width: 90%;
+        padding: 5px 5%;
+    }
+
+    .item img {
+        width: 100%;
+    }
+}
+
+.item:hover{
+    border: 1px solid var(--border-color-vivid);
+}
+
+.item h5{
+    margin-top: .3rem;
+}
+
+.item .controls{
+    display: flex;
+    justify-content: space-evenly;
+}

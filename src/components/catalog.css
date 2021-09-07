@@ -1,0 +1,11 @@
+.catalog-page {
+    min-height: calc(100vh - 120px);
+    background-color: rgba(223, 223, 223, 0.295);
+}
+
+@media (max-width: 414px){
+    .catalog-page {
+        height: calc(100vh - 120px);
+        overflow-y: scroll;
+    }
+}

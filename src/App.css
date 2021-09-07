@@ -1,3 +1,10 @@
+:root {
+  --page-background: #fafafa;
+  --border-color: rgb(170, 170, 170);
+  --border-color-vivid: rgb(128, 128, 128);
+}
+
+
 .App {
   text-align: center;
 }
