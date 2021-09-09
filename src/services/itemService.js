@@ -49,7 +49,7 @@ var data = [
         _id:"gafyaert67464",
         title: "Microscope",
         price: 499.00,
-        category: "microscope",
+        category: "microscopes",
         image: "microscope.png",
         discount: 0,
         minimum: 1,

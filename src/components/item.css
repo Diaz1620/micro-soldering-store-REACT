@@ -9,8 +9,9 @@
 }
 
 .item img {
-    width: 275px;
-    height: 275px;
+    padding: 1rem;
+    width: 250px;
+    height: 220px;
 }
 
 @media (max-width: 414px){
@@ -35,4 +36,8 @@
 .item .controls{
     display: flex;
     justify-content: space-evenly;
+}
+
+.prices {
+    margin: 1rem;
 }
