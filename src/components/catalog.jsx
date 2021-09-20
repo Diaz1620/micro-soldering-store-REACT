@@ -60,7 +60,7 @@ const Catalog = () => {
     return(
         <div className="catalog-page">
             <h3>Check our amazing products</h3>
-            <h6>Currently we have {products.length} fresh items for you</h6>
+            <h6>Currently we have {products.length} items for you</h6>
             <div className="filters">
 
                 <button onClick={handleFilterReset} className="btn btn-sm btn-dark mx-1">All</button>
