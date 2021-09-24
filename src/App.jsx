@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import GlobalState from './context/globalState';
 // import { test, test2, test3 } from "./components/home";
+import Cart from './components/cart';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/catalog" exact component={Catalog} ></Route>
               <Route path="/about" exact component={About}></Route>
               <Route path="/admin" exact component={Admin}></Route>
+              <Route path="/cart" exact component={Cart}></Route>
             </Switch>
           </div>
 
