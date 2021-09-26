@@ -1,10 +1,19 @@
 import "./itemOnCart.css";
+import { useContext } from 'react';
+import StoreContext from "../context/storeContext";
 
 const ItemOnCart = (props) => {
+    const removeFromCart = useContext(StoreContext).removeProductFromCart;
+    
     const getTotal = () => {
         let total = props.data.price * props.data.quantity;
         return total.toFixed(2);
     }
+    
+    const handleRemove = () => {
+        removeFromCart(props.data._id);
+    };
+
 
     return (
         <div className="item-on-cart d-flex">
@@ -27,7 +36,7 @@ const ItemOnCart = (props) => {
                 <label>${getTotal()}</label>
             </div>
             <div className="col-2">
-                <button className="btn btn-danger">Remove</button>
+                <button onClick={handleRemove} className="btn btn-danger">Remove</button>
             </div>
         </div>
     )

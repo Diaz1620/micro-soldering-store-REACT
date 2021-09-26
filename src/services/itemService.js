@@ -1,3 +1,4 @@
+import axios from "axios";
 
 var data = [
     {
@@ -113,8 +114,20 @@ var data = [
 
 class ItemService {
     
-    getCatalog(){
+    async getCatalog(){
+        let response = await axios.get("http://127.0.0.1:5000/api/catalog");
+        return response.data;
+
         return data;
+    }
+
+    async saveItem(item){
+        try{
+            let response = await axios.post("http://127.0.0.1:5000/api/catalog", item);
+            console.log("result of saving", response.data);
+        } catch {
+            console.log("Error, product not saved");
+        }
     }
 }
 

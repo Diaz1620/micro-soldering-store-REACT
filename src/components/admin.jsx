@@ -1,5 +1,6 @@
 import "./admin.css";
 import { useState } from 'react';
+import ItemService from '../services/itemService';
 
 const Admin = () => {
     const [product, setProduct] = useState({});
@@ -17,7 +18,18 @@ const Admin = () => {
     };
 
     const registerItem = () => {
-        console.log(product);
+        // console.log(product);
+        var copy = {...product};
+        copy.price = parseFloat(copy.price);
+        copy.discount = parseFloat(copy.discount)
+        // copy.stock = +copy.stock;
+        copy.minimum = copy.minimum * 1;
+        
+        console.log(copy);
+
+        let service = new ItemService();
+        service.saveItem(copy);
+
     }
 
     return (
