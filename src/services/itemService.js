@@ -118,6 +118,7 @@ class ItemService {
         let response = await axios.get("http://127.0.0.1:5000/api/catalog");
         return response.data;
 
+        // return mock data
         return data;
     }
 
@@ -129,6 +130,8 @@ class ItemService {
             console.log("Error, product not saved");
         }
     }
+
+    
 }
 
 export default ItemService;
