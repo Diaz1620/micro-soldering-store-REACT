@@ -131,6 +131,20 @@ class ItemService {
         }
     }
 
+    async getCouponCodes(){
+        let response = await axios.get("http://127.0.0.1:5000/api/couponCode");
+        return response.data;
+    }
+
+    async saveCoupon(code){
+        try{
+            let response = await axios.post("http://127.0.0.1:5000/api/couponCode", code);
+            return response.data;
+        } catch(error) {
+            console.log("Error saving coupon",error);
+            return null;
+        }
+    }
     
 }
 

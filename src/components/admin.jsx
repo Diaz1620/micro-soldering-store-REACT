@@ -1,10 +1,12 @@
 import "./admin.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ItemService from '../services/itemService';
+import "./admin.css";
 
 const Admin = () => {
     const [product, setProduct] = useState({});
     const [coupon, setCoupon] = useState({});
+    const [allCoupons, setAllCoupons] = useState([]);
 
     const couponTextChange = (e) => {
         // console.log(e.target.name, e.target.value);
@@ -17,13 +19,16 @@ const Admin = () => {
         setCoupon(copy);
     }
 
-    const registerCoupon = () => {
+    const registerCoupon = async () => {
         // console.log(coupon);
         var copy = {...coupon};
         copy.discount = parseFloat(copy.discount)
         console.log(copy);
 
-    }
+        let service = new ItemService();
+        let res = await service.saveCoupon(copy);
+        console.log(res);
+    };
 
     const textChange = (event) => {
         let name = event.target.name;
@@ -51,6 +56,16 @@ const Admin = () => {
         service.saveItem(copy);
 
     }
+
+    const loadCouponCodes = async () => {
+        let service = new ItemService();
+        let list = await service.getCouponCodes();
+        setAllCoupons(list)
+    }
+
+    useEffect(() => {
+        loadCouponCodes();
+    },[])
 
     return (
         <div className="admin-page">
@@ -102,6 +117,14 @@ const Admin = () => {
                             </div>
                         </form>
                             <button onClick={registerCoupon} className="btn btn-primary">Register Coupon</button>
+                            <div className="couponList m-5">
+                                <h5>Current Coupons</h5>
+                                <ul>
+                                    { allCoupons.map(c => (
+                                        <li key={c.code}>{c.code} - {c.discount}</li>
+                                    ))}
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import "./cart.css"
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import storeContext from "../context/storeContext";
 import ItemOnCart from "./itemOnCart";
 
@@ -7,6 +7,7 @@ import ItemOnCart from "./itemOnCart";
 
 const Cart = ()=>{
     const cart = useContext(storeContext).cart;
+    const [couponCode, setCouponCode] = useState("");
 
     const getTotal = () => {
         let total = 0;
@@ -16,6 +17,14 @@ const Cart = ()=>{
         }
         return total.toFixed(2)
     }
+
+    const codeChange = (e) => {
+        setCouponCode(e.target.value);
+    };
+
+    const handleValidate = () => {
+        console.log("Validate",couponCode);
+    };
 
     if(!cart.length){
         return <div className="cart-page">
@@ -31,12 +40,29 @@ const Cart = ()=>{
             <div className="total-container">
                 <h4>Order Total:</h4>
                 <h3>${getTotal()}</h3>
+                <div>
+                    <form>
+                        <label className="form-label">Enter Coupon</label>
+                    </form>
+                </div>
             </div>
             <hr />
-            <div className="cart-container">
-                {cart.map((prod, key) => (
-                    <ItemOnCart key={prod._id} data={prod}></ItemOnCart>
-                ))}
+            <div className="d-flex">
+                <div className="cart-container col">
+                    {cart.map((prod, key) => (
+                        <ItemOnCart key={prod._id} data={prod}></ItemOnCart>
+                    ))}
+                </div>
+                <div>
+                    <h3>${getTotal()}</h3>
+                    <form>
+                        <label className="form-label">Have a coupon?</label>
+                        <input type="text" className="form-control " name="coupon" onChange={codeChange}/>
+                    </form>
+                    <button className="btn btn-dark my-2" onClick={handleValidate}>Validate</button>
+                    <hr />
+                    <button className="btn btn-primary mb-3"> Submit Order </button>
+                </div>
             </div>
             
         </div>
