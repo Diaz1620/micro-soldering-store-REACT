@@ -113,9 +113,10 @@ var data = [
 
 
 class ItemService {
+    serverUrl = "http://127.0.0.1:5000"
     
     async getCatalog(){
-        let response = await axios.get("http://127.0.0.1:5000/api/catalog");
+        let response = await axios.get(this.serverUrl + "/api/catalog");
         return response.data;
 
         // return mock data
@@ -124,7 +125,7 @@ class ItemService {
 
     async saveItem(item){
         try{
-            let response = await axios.post("http://127.0.0.1:5000/api/catalog", item);
+            let response = await axios.post(this.serverUrl + "/api/catalog", item);
             console.log("result of saving", response.data);
         } catch {
             console.log("Error, product not saved");
@@ -132,17 +133,39 @@ class ItemService {
     }
 
     async getCouponCodes(){
-        let response = await axios.get("http://127.0.0.1:5000/api/couponCode");
+        let response = await axios.get(this.serverUrl + "/api/couponCode");
         return response.data;
     }
 
     async saveCoupon(code){
         try{
-            let response = await axios.post("http://127.0.0.1:5000/api/couponCode", code);
+            let response = await axios.post(this.serverUrl + "/api/couponCode", code);
             return response.data;
         } catch(error) {
             console.log("Error saving coupon",error);
             return null;
+        }
+    }
+
+    async validateCoupon(code){
+        try{
+            let response = await axios.get(this.serverUrl + "/api/couponCode/" + code)
+            return response.data;
+        }
+        catch{
+            console.log("Error validating coupon");
+            return null;
+        }
+    }
+
+    async saveOrder(order) {
+        try{
+            let response = await axios.post(this.serverUrl + "/api/orders", order)
+            return response.data;
+        }
+        catch{
+            console.log("Error saving order");
+            return null
         }
     }
     

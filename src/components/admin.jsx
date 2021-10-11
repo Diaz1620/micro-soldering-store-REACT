@@ -71,7 +71,7 @@ const Admin = () => {
         <div className="admin-page">
             <h1>Store Management</h1>
             <div className="d-flex justify-content-around">
-                <div className="item-form d-flex justify-content-center">
+                <div className="item-form d-flex justify-content-center flex-column">
                     <form action="POST">
                         <h4>Register New Product</h4>
                         <div className="mb-3">
@@ -98,8 +98,8 @@ const Admin = () => {
                             <label className="form-label">Minimum</label>
                             <input type="number" className="form-control" name="minimum" onChange={textChange} />
                         </div>
-                        <button onClick={registerItem} className="btn btn-primary mb-3">Register Item</button>
                     </form>
+                        <button onClick={registerItem} className="btn btn-primary mb-3">Register Item</button>
                 </div>
 
                 <div className="">
